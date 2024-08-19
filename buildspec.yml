@@ -25,6 +25,7 @@ phases:
   post_build:
     commands:
       - echo Build completed on `date`
+      - aws ecr get-login-password --region us-east-1
       - docker push $REPOSITORY_URI:latest
       - docker push $REPOSITORY_URI:$IMAGE_TAG
       - echo write definitions file...
